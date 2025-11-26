@@ -1,0 +1,21 @@
+.Links {
+    background-color: #00796b; 
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: flex-start;
+}
+.Links a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    margin-right: 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+.Links a:hover {
+    background-color: #004d40; 
+}
+main {
+    padding: 0;
+}

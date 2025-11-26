@@ -1,0 +1,63 @@
+<div class="module-container">
+    
+    <div class="form-section">
+        <h1>{{ title() }}</h1>
+        <hr>
+  
+        <label>Date of Occurrence</label>
+        <input type="date" [value]="date()"
+        (input)="date.set($any($event.target).value)" placeholder="When the disaster occurred">
+
+        <label>Location</label>
+        <input type="text" [value]="location()"
+        (input)="location.set($any($event.target).value)" placeholder="Barangay or street location">
+
+        <label>Incident Type</label>
+        <input type="text" [value]="incidentType()"
+        (input)="incidentType.set($any($event.target).value)" placeholder="Flood, Typhoon, Landslide, etc.">
+
+        <label>Damage Level</label>
+        <input type="text" [value]="damageLevel()"
+        (input)="damageLevel.set($any($event.target).value)" placeholder="Minor / Moderate / Severe">
+
+        <label>Remarks</label>
+        <textarea [value]="remarks()"
+        (input)="remarks.set($any($event.target).value)" placeholder="Additional notes or details"></textarea>
+
+
+        <button (click)="addIncident()" class="primary-btn" style="width: 100%;">
+            {{ editingId() ? 'Update Record' : 'Save' }}
+        </button>
+    </div>
+
+    <div class="list-section">
+        <h2>Reported Incidents</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date of Occurrence</th>
+                    <th>Location</th>
+                    <th>Incident Type</th>
+                    <th>Damage Level</th>
+                    <th>Remarks</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let incident of incidents">
+                    <td>{{ incident.date }}</td>
+                    <td>{{ incident.location }}</td>
+                    <td>{{ incident.incidentType }}</td>
+                    <td>{{ incident.damageLevel }}</td>
+                    <td>{{ incident.remarks }}</td>
+                    <td>
+                        <button (click)="startEditIncident(incident.id, incident.date, incident.location, incident.incidentType, incident.damageLevel, incident.remarks)" class="edit-btn">Edit</button>
+                        <button (click)="deleteIncident(incident.id)" class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <router-outlet/>
+</div>

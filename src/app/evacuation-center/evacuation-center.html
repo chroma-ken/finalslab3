@@ -1,0 +1,63 @@
+<div class="module-container">
+    
+    <div class="form-section">
+        <h1>{{ title() }}</h1>
+        <hr>
+  
+        <label>Center Name</label>
+        <input type="text" [value]="centerName()"
+        (input)="centerName.set($any($event.target).value)" placeholder="Evacuation facility name">
+
+        <label>Max Capacity</label>
+        <input type="number" [value]="capacity()"
+        (input)="capacity.set($any($event.target).valueAsNumber)" placeholder="Maximum number of evacuees">
+
+        <label>Current Population</label>
+        <input type="number" [value]="currentPopulation()"
+        (input)="currentPopulation.set($any($event.target).valueAsNumber)" placeholder="Current evacuees staying">
+
+        <label>Barangay</label>
+        <input type="text" [value]="barangay()"
+        (input)="barangay.set($any($event.target).value)" placeholder="Location">
+
+        <label>Status</label>
+        <input type="text" [value]="status()"
+        (input)="status.set($any($event.target).value)" placeholder="Open / Full / Under Maintenance">
+
+
+        <button (click)="addCenter()" class="primary-btn" style="width: 100%;">
+            {{ editingId() ? 'Update Record' : 'Save' }}
+        </button>
+    </div>
+
+    <div class="list-section">
+        <h2>Evacuation Center Records</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Center Name</th>
+                    <th>Barangay</th>
+                    <th>Max Capacity</th>
+                    <th>Current Population</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let center of centers">
+                    <td>{{ center.name }}</td>
+                    <td>{{ center.barangay }}</td>
+                    <td>{{ center.capacity }}</td>
+                    <td>{{ center.population }}</td>
+                    <td>{{ center.status }}</td>
+                    <td>
+                        <button (click)="startEditCenter(center.id, center.name, center.capacity, center.barangay, center.population, center.status)" class="edit-btn">Edit</button>
+                        <button (click)="deleteCenter(center.id)" class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <router-outlet/>
+</div>
