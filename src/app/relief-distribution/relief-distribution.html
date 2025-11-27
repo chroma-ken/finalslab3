@@ -1,62 +1,75 @@
-<div class="module-container">
-    
-    <div class="form-section">
-        <h1>{{ title() }}</h1>
-        <hr>
-  
+<div class="relief-dashboard">
+
+  <!-- Relief Records Table -->
+  <section class="records-section">
+    <h2>Relief Distribution Records</h2>
+    <div class="records-table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Barangay</th>
+            <th>Families Assisted</th>
+            <th>Relief Items</th>
+            <th>Distributed By</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let relief of reliefs">
+            <td>{{ relief.date }}</td>
+            <td>{{ relief.barangay }}</td>
+            <td>{{ relief.numberOfFamilies }}</td>
+            <td>{{ relief.reliefitems }}</td>
+            <td>{{ relief.distributedBy }}</td>
+            <td>
+              <button (click)="startEditRelief(relief.id, relief.date, relief.barangay, relief.numberOfFamilies, relief.reliefitems, relief.distributedBy)" class="edit-btn">Edit</button>
+              <button (click)="deleteRelief(relief.id)" class="delete-btn">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Add / Edit Relief Form -->
+  <section class="relief-form-section">
+    <header>
+      <h1>{{ title() }}</h1>
+      <hr>
+    </header>
+
+    <form>
+      <div class="form-group">
         <label>Date of Distribution</label>
-        <input type="date" [value]="date()"
-        (input)="date.set($any($event.target).value)" placeholder="Date of distribution">
+        <input type="date" [value]="date()" (input)="date.set($any($event.target).value)">
+      </div>
 
+      <div class="form-group">
         <label>Barangay</label>
-        <input type="text" [value]="barangay()"
-        (input)="barangay.set($any($event.target).value)" placeholder="Where the goods were delivered">
+        <input type="text" [value]="barangay()" (input)="barangay.set($any($event.target).value)">
+      </div>
 
+      <div class="form-group">
         <label>Families Assisted</label>
-        <input type="number" [value]="numberOfFamilies()"
-        (input)="numberOfFamilies.set($any($event.target).value)" placeholder="Number of families assisted">
+        <input type="number" [value]="numberOfFamilies()" (input)="numberOfFamilies.set($any($event.target).value)">
+      </div>
 
+      <div class="form-group">
         <label>Relief Items</label>
-        <input type="text" [value]="reliefitems()"
-        (input)="reliefitems.set($any($event.target).value)" placeholder="Food pack, medicine, clothing, etc.">
+        <input type="text" [value]="reliefitems()" (input)="reliefitems.set($any($event.target).value)">
+      </div>
 
+      <div class="form-group">
         <label>Distributed By</label>
-        <input type="text" [value]="distributedBy()"
-        (input)="distributedBy.set($any($event.target).value)" placeholder="Person or office handling the activity">
+        <input type="text" [value]="distributedBy()" (input)="distributedBy.set($any($event.target).value)">
+      </div>
 
-        <button (click)="addRelief()" class="primary-btn" style="width: 100%;">
-            {{ editingId() ? 'Update Record' : 'Save' }}
-        </button>
-    </div>
+      <button type="button" class="submit-btn" (click)="addRelief()">
+        {{ editingId() ? 'Update Record' : 'Save' }}
+      </button>
+    </form>
+  </section>
 
-    <div class="list-section">
-        <h2>Relief Distribution Records</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Date of Distribution</th>
-                    <th>Barangay</th>
-                    <th>Families Assisted</th>
-                    <th>Relief Items</th>
-                    <th>Distributed By</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let relief of reliefs">
-                    <td>{{ relief.date }}</td>
-                    <td>{{ relief.barangay }}</td>
-                    <td>{{ relief.numberOfFamilies }}</td>
-                    <td>{{ relief.reliefitems }}</td>
-                    <td>{{ relief.distributedBy }}</td>
-                    <td>
-                        <button (click)="startEditRelief(relief.id, relief.date, relief.barangay, relief.numberOfFamilies, relief.reliefitems, relief.distributedBy)" class="edit-btn">Edit</button>
-                        <button (click)="deleteRelief(relief.id)" class="delete-btn">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <router-outlet/>
+  <router-outlet></router-outlet>
 </div>

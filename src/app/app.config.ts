@@ -11,6 +11,6 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideFirebaseApp(() => initializeApp(environment.firebase)),provideFirestore(() => getFirestore()), provideFirebaseApp(() => initializeApp({ projectId: "municipal-disaster-respo-ac5c6", appId: "1:57725791916:web:cde3eee0d6e89fe07af909", storageBucket: "municipal-disaster-respo-ac5c6.firebasestorage.app", apiKey: "AIzaSyCYNuo7nqj71bYBticuVlBSyUVMkm2y-fo", authDomain: "municipal-disaster-respo-ac5c6.firebaseapp.com", messagingSenderId: "57725791916", measurementId: "G-HYXNHYVR3P"})), provideFirestore(() => getFirestore())
+    provideFirebaseApp(() => initializeApp(environment.firebase)),provideFirestore(() => getFirestore()), provideFirebaseApp(() => initializeApp({ projectId: "municipal-lab3", appId: "1:438317422362:web:89053e14307e4d31eabea3", storageBucket: "municipal-lab3.firebasestorage.app", apiKey: "AIzaSyBJanFvcV74feGC7Indcbhy_nLMMfmUylI", authDomain: "municipal-lab3.firebaseapp.com", messagingSenderId: "438317422362", measurementId: "G-Q7F20R61RR" })), provideFirestore(() => getFirestore())
   ]
 };

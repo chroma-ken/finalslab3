@@ -10,6 +10,5 @@ export const routes: Routes = [
     {path: '', redirectTo: 'incident-report', pathMatch: 'full'}, 
     {path: 'incident-report', component: IncidentReport},
     {path: 'evacuation-center', component: EvacuationCenter},
-    {path: 'relief-distribution', component: ReliefDistribution},
-
+    {path: 'relief-distribution', component: ReliefDistribution}
 ];

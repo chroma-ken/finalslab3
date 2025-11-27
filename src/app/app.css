@@ -1,21 +1,56 @@
-.Links {
-    background-color: #00796b; 
-    padding: 10px 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+/* Navigation bar container */
+.nav-bar {
     display: flex;
-    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 14px 24px;
+    background-color: #e5ebf0; /* strong blue base */
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
 }
-.Links a {
-    color: white;
+
+/* Navigation links */
+.nav-bar a {
+    padding: 12px 20px;
+    color: #fff;
+    font-weight: 600;
     text-decoration: none;
-    padding: 8px 15px;
-    margin-right: 15px;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #43a047, #66bb6a); /* green gradient for button feel */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
 }
-.Links a:hover {
-    background-color: #004d40; 
+
+/* Hover effect */
+.nav-bar a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    background: linear-gradient(135deg, #388e3c, #4caf50); /* darker gradient on hover */
 }
+
+/* Active link styling */
+.nav-bar a.router-link-active {
+    background: linear-gradient(135deg, #ffb300, #ffc107); /* golden highlight for active */
+    color: #000;
+}
+
+/* Main content padding */
 main {
-    padding: 0;
+    padding: 24px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .nav-bar {
+        gap: 10px;
+        padding: 12px 16px;
+    }
+
+    .nav-bar a {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
 }

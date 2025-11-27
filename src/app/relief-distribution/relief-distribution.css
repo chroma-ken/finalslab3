@@ -1,45 +1,144 @@
-.module-container {
+/* Relief Dashboard Container */
+.relief-dashboard {
+    max-width: 1000px;
+    margin: 0 auto;
     padding: 30px 20px;
     display: flex;
-    flex-wrap: wrap; 
-    gap: 30px;
-    justify-content: center;
+    flex-direction: column;
+    gap: 40px;
+    background-color: #f0f3f7;
 }
-.form-section {
-    flex: 1 1 350px;
+
+/* Records Section */
+.records-section {
+    background: #ffffff;
     padding: 25px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    height: fit-content; 
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
-.form-section h1, .form-section hr {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+
+.records-section h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #333;
 }
-.list-section {
-    flex: 2 1 600px;
-    padding: 25px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+
+.records-table-wrapper {
     overflow-x: auto;
 }
-.form-section label, 
-.form-section input, 
-.form-section textarea {
-    display: block;
+
+table {
     width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 15px;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+table th, table td {
+    padding: 12px 15px;
     text-align: left;
+    border-bottom: 1px solid #e0e0e0;
 }
-.form-section input, .form-section textarea {
-    margin-top: 5px;
+
+table th {
+    background-color: #f0f4f8;
+}
+
+table tr:hover {
+    background-color: #f5f7fa;
+}
+
+.edit-btn, .delete-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: 0.3s background-color;
+}
+
+.edit-btn { background-color: #00796b; color: #fff; }
+.edit-btn:hover { background-color: #004d40; }
+
+.delete-btn { background-color: #d32f2f; color: #fff; }
+.delete-btn:hover { background-color: #9a0007; }
+
+/* Form Section */
+.relief-form-section {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.relief-form-section header h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.relief-form-section header hr {
+    width: 50px;
+    border: none;
+    border-top: 3px solid #00796b;
+    margin: 10px auto 20px;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 12px;
     border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
-textarea {
-    resize: vertical;
-    min-height: 80px;
+
+.form-group input:focus {
+    border-color: #00796b;
+    box-shadow: 0 0 6px rgba(0,121,107,0.3);
+    outline: none;
+}
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    background-color: #00796b;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s background-color, 0.2s transform;
+}
+
+.submit-btn:hover {
+    background-color: #004d40;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .relief-dashboard {
+        padding: 20px 10px;
+        gap: 25px;
+    }
+
+    table th, table td {
+        padding: 10px;
+    }
 }

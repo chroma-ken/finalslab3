@@ -13,7 +13,7 @@ templateUrl: './relief-distribution.html',
 styleUrl: './relief-distribution.css',
 })
 export class ReliefDistribution  {
-title = signal('ReliefDistribution');
+title = signal('Relief Distribution');
 
 date = signal('');
 barangay = signal('');

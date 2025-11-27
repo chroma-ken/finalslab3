@@ -1,63 +1,75 @@
-<div class="module-container">
-    
-    <div class="form-section">
-        <h1>{{ title() }}</h1>
-        <hr>
-  
+<div class="center-dashboard">
+
+  <!-- Evacuation Center Records Table -->
+  <section class="records-section">
+    <h2>Evacuation Center Records</h2>
+    <div class="records-table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Center Name</th>
+            <th>Barangay</th>
+            <th>Max Capacity</th>
+            <th>Current Population</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let center of centers">
+            <td>{{ center.name }}</td>
+            <td>{{ center.barangay }}</td>
+            <td>{{ center.capacity }}</td>
+            <td>{{ center.population }}</td>
+            <td>{{ center.status }}</td>
+            <td>
+              <button (click)="startEditCenter(center.id, center.name, center.capacity, center.barangay, center.population, center.status)" class="edit-btn">Edit</button>
+              <button (click)="deleteCenter(center.id)" class="delete-btn">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Add / Edit Evacuation Center Form -->
+  <section class="center-form-section">
+    <header>
+      <h1>{{ title() }}</h1>
+      <hr>
+    </header>
+
+    <form>
+      <div class="form-group">
         <label>Center Name</label>
-        <input type="text" [value]="centerName()"
-        (input)="centerName.set($any($event.target).value)" placeholder="Evacuation facility name">
+        <input type="text" [value]="centerName()" (input)="centerName.set($any($event.target).value)" placeholder="Evacuation facility name">
+      </div>
 
+      <div class="form-group">
         <label>Max Capacity</label>
-        <input type="number" [value]="capacity()"
-        (input)="capacity.set($any($event.target).valueAsNumber)" placeholder="Maximum number of evacuees">
+        <input type="number" [value]="capacity()" (input)="capacity.set($any($event.target).valueAsNumber)" placeholder="Maximum number of evacuees">
+      </div>
 
+      <div class="form-group">
         <label>Current Population</label>
-        <input type="number" [value]="currentPopulation()"
-        (input)="currentPopulation.set($any($event.target).valueAsNumber)" placeholder="Current evacuees staying">
+        <input type="number" [value]="currentPopulation()" (input)="currentPopulation.set($any($event.target).valueAsNumber)" placeholder="Current evacuees staying">
+      </div>
 
+      <div class="form-group">
         <label>Barangay</label>
-        <input type="text" [value]="barangay()"
-        (input)="barangay.set($any($event.target).value)" placeholder="Location">
+        <input type="text" [value]="barangay()" (input)="barangay.set($any($event.target).value)" placeholder="Location">
+      </div>
 
+      <div class="form-group">
         <label>Status</label>
-        <input type="text" [value]="status()"
-        (input)="status.set($any($event.target).value)" placeholder="Open / Full / Under Maintenance">
+        <input type="text" [value]="status()" (input)="status.set($any($event.target).value)" placeholder="Open / Full / Under Maintenance">
+      </div>
 
+      <button type="button" class="submit-btn" (click)="addCenter()">
+        {{ editingId() ? 'Update Record' : 'Save' }}
+      </button>
+    </form>
+  </section>
 
-        <button (click)="addCenter()" class="primary-btn" style="width: 100%;">
-            {{ editingId() ? 'Update Record' : 'Save' }}
-        </button>
-    </div>
-
-    <div class="list-section">
-        <h2>Evacuation Center Records</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Center Name</th>
-                    <th>Barangay</th>
-                    <th>Max Capacity</th>
-                    <th>Current Population</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let center of centers">
-                    <td>{{ center.name }}</td>
-                    <td>{{ center.barangay }}</td>
-                    <td>{{ center.capacity }}</td>
-                    <td>{{ center.population }}</td>
-                    <td>{{ center.status }}</td>
-                    <td>
-                        <button (click)="startEditCenter(center.id, center.name, center.capacity, center.barangay, center.population, center.status)" class="edit-btn">Edit</button>
-                        <button (click)="deleteCenter(center.id)" class="delete-btn">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    
-    <router-outlet/>
+  <router-outlet></router-outlet>
 </div>
