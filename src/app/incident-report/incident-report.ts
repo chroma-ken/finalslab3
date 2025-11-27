@@ -22,13 +22,13 @@ export class IncidentReport {
 
   editingId = signal<string | null>(null);
 
-  reports: any[] = [];
+  incidents: any[] = [];
 
   constructor(private firestore: Firestore) {
-    const emergency_reports_collection = collection(this.firestore, 'incident_reports');
-    collectionData(emergency_reports_collection, { idField: 'id' })
+    const incidentCollection = collection(this.firestore, 'incident_reports');
+    collectionData(incidentCollection, { idField: 'id' })
       .subscribe(data => {
-        this.reports = data;
+        this.incidents = data;
       });
   }
 
@@ -50,11 +50,11 @@ export class IncidentReport {
     const id = this.editingId();
 
     if (date && location) {
-      const emergency_reports_collection = collection(this.firestore, 'incident_reports');
+      const incidentCollection = collection(this.firestore, 'incident_reports');
       if (id) {
         this.editReport(id, date, location, incidentType, damageLevel, remarks);
       } else {
-        addDoc(emergency_reports_collection, { date, location, incidentType, damageLevel, remarks });
+        addDoc(incidentCollection, { date, location, incidentType, damageLevel, remarks });
         this.resetForm();
       }
     }
